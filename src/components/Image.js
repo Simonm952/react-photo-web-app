@@ -1,15 +1,11 @@
-import React from 'react'
+import React from "react"
 
-function Image({className}){
-    return(
+function Image({className, img}) {
+    return (
         <div className={`${className} image-container`}>
-        <img className = "image-grid"/>
-
- 
+            <img src={img.url} className="image-grid"/>
         </div>
-
     )
-
 }
 
 export default Image

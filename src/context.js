@@ -1,20 +1,17 @@
-import React, {useState,useEffect} from "react"
+import React, {useState, useEffect} from "react"
 
 const Context = React.createContext()
 
 function ContextProvider({children}) {
-    const [allPhotos, setAllPhotos]=useState([])
-
+    const [allPhotos, setAllPhotos] = useState([])
+    
     const url = "https://raw.githubusercontent.com/Simonm952/images-json/main/image.json"
-
     useEffect(() => {
         fetch(url)
-        .then(res => res.json())
-        .then(data => setAllPhotos(data))
-    },[])
-
-    console.log(allPhotos)
-
+            .then(res => res.json())
+            .then(data => setAllPhotos(data))
+    }, [])
+    
     return (
         <Context.Provider value={{allPhotos}}>
             {children}
