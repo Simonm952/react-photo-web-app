@@ -10,9 +10,16 @@ function Image({className, img}) {
     console.log(hovered)
     const elementHeart = <FontAwesomeIcon icon={faHeart} />
     const elementCart = <FontAwesomeIcon icon={faShoppingCart} />
-    const heartIcon = hovered && <i className="ri-heart-line favorite" onClick={() => toggleFavorite(img.id)}>{elementHeart}</i>
+    function heartIcon() {
+        if(img.isFavorite) {
+            return <i className="ri-heart-line favorite" onClick={() => toggleFavorite(img.id)}>{elementHeart}</i>
+        } else if(hovered) {
+            return <i className="ri-heart-fill favorite" onClick={() => toggleFavorite(img.id)}>{elementHeart}</i>
+        }
+    }
     const cartIcon = hovered && <i className="ri-add-circle-line cart">{elementCart}</i>
     
+
 
     return (
         <div className={`${className} image-container`}
@@ -22,7 +29,7 @@ function Image({className, img}) {
         
         >
             <img src={img.url} className="image-grid"/>
-            {heartIcon}
+            {heartIcon()}
             {cartIcon}
         </div>
     )
