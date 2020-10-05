@@ -1,8 +1,11 @@
 import React, {useState} from "react"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 function Image({className, img}) {
     const [hovered, setHovered]= useState(false)
     console.log(hovered)
+    const element = <FontAwesomeIcon icon={faHeart} />
     
 
     return (
@@ -13,6 +16,10 @@ function Image({className, img}) {
         
         >
             <img src={img.url} className="image-grid"/>
+            {
+                hovered &&
+                <i className="ri-heart-line favorite">{element}</i> 
+            }
         </div>
     )
 }
